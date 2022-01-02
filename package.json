@@ -1,7 +1,7 @@
 {
-  "name": "hellovsc",
-	"displayName": "test-ext",
-	"description": "print hello on a little side bar",
+  "name": "OctopusWriter",
+	"displayName": "Octopus-Writer",
+	"description": "this extension is meant to provide new text editing tools to allow a faster workflow",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.54.0"
@@ -10,18 +10,18 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:hellovsc.captureCursor",
-        "onCommand:hellovsc.actiavteCursors"
+		"onCommand:octopus_writer.captureCursor",
+        "onCommand:octopus_writer.actiavteCursors"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "hellovsc.captureCursor",
+				"command": "octopus_writer.captureCursor",
 				"title": "Capture Cursor"
 			},
 			{
-				"command": "hellovsc.actiavteCursors",
+				"command": "octopus_writer.actiavteCursors",
 				"title": "Activate Cursors"
 			}
 		]
@@ -41,6 +41,6 @@
         "mocha": "^9.1.3",
         "typescript": "^4.4.4",
         "@vscode/test-electron": "^1.6.2"
-    }
-
+    },
+	"repository": "https://github.com/yosefgoren/Octopus-Writer.git"
 }
