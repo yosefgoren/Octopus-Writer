@@ -2,7 +2,7 @@
   "name": "OctopusWriter",
 	"displayName": "Octopus-Writer",
 	"description": "this extension is meant to provide new text editing tools to allow a faster workflow",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.54.0"
 	},
@@ -42,5 +42,6 @@
         "typescript": "^4.4.4",
         "@vscode/test-electron": "^1.6.2"
     },
-	"repository": "https://github.com/yosefgoren/Octopus-Writer.git"
+	"repository": "https://github.com/yosefgoren/Octopus-Writer.git",
+	"publisher": "octopus-writer"
 }
