@@ -3,6 +3,10 @@ const vscode = require('vscode');
 
 let pending_selections = [];
 
+function pos2str(position){
+	return "line: "+position.line+", character: "+position.character
+}
+
 /**
  * @param {vscode.ExtensionContext} context
  */
@@ -21,8 +25,12 @@ function activate(context) {
 		vscode.window.activeTextEditor.selections = pending_selections
 		pending_selections = []
 	});
+	let disposable3 = vscode.commands.registerCommand('octopus_writer.popCursor', function () {
+		vscode.window.activeTextEditor.selection = pending_selections.pop()
+	});
 	context.subscriptions.push(disposable1);
 	context.subscriptions.push(disposable2);
+	context.subscriptions.push(disposable3);
 }
 function deactivate() {}
 

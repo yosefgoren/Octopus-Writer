@@ -2,7 +2,7 @@
   "name": "OctopusWriter",
 	"displayName": "Octopus-Writer",
 	"description": "this extension is meant to provide new text editing tools to allow a faster workflow",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"engines": {
 		"vscode": "^1.54.0"
 	},
@@ -11,7 +11,8 @@
 	],
 	"activationEvents": [
 		"onCommand:octopus_writer.captureCursor",
-        "onCommand:octopus_writer.actiavteCursors"
+        "onCommand:octopus_writer.actiavteCursors",
+		"onCommand:octopus_writer.popCursor"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -23,6 +24,10 @@
 			{
 				"command": "octopus_writer.actiavteCursors",
 				"title": "Activate Cursors"
+			},
+			{
+				"command": "octopus_writer.popCursor",
+				"title": "Pop Last Cursor"
 			}
 		]
 	},
