@@ -38,9 +38,13 @@ function activate(context) {
 	let disposable3 = vscode.commands.registerCommand('octopus_writer.popCursor', function () {
 		vscode.window.activeTextEditor.selection = pending_selections.pop()
 	});
+	let disposable4 = vscode.commands.registerCommand('octopus_writer.throwCaptured', function () {
+		pending_selections = []
+	});
 	context.subscriptions.push(disposable1);
 	context.subscriptions.push(disposable2);
 	context.subscriptions.push(disposable3);
+	context.subscriptions.push(disposable4);
 }
 function deactivate() {}
 

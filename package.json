@@ -12,7 +12,8 @@
 	"activationEvents": [
 		"onCommand:octopus_writer.captureCursors",
         "onCommand:octopus_writer.actiavteCursors",
-		"onCommand:octopus_writer.popCursor"
+		"onCommand:octopus_writer.popCursor",
+		"onCommand:octopus_writer.throwCaptured"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -28,6 +29,10 @@
 			{
 				"command": "octopus_writer.popCursor",
 				"title": "Pop Last Cursor"
+			},
+			{
+				"command": "octopus_writer.throwCaptured",
+				"title": "Throw Captured Cursors"
 			}
 		]
 	},
