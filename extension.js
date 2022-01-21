@@ -13,16 +13,26 @@ function pos2str(position){
 function activate(context) {
 	console.log('Octopus cursors has been activated.');
 
-	let disposable1 = vscode.commands.registerCommand('octopus_writer.captureCursor', function () {
+	let disposable1 = vscode.commands.registerCommand('octopus_writer.captureCursors', function () {
 		let active_editor = vscode.window.activeTextEditor
-		const anchor_pos = active_editor.selection.anchor
-		const active_pos = active_editor.selection.active
-		vscode.window.showInformationMessage('Captured Cursor!');
-		pending_selections.push(new vscode.Selection(anchor_pos, active_pos))
+		num_cursors = active_editor.selections.length
+		for(selection_idx = 0; selection_idx < num_cursors; ++selection_idx){
+			const anchor_pos = active_editor.selections[selection_idx].anchor
+			const active_pos = active_editor.selections[selection_idx].active
+			pending_selections.push(new vscode.Selection(anchor_pos, active_pos))
+		}
+		if(num_cursors == 1){
+			vscode.window.showInformationMessage('Captured Cursor.');
+		}
+		if(num_cursors > 1){
+			vscode.window.showInformationMessage('Captured '+num_cursors.toString()+' Cursors.');
+		}
 	});
 	let disposable2 = vscode.commands.registerCommand('octopus_writer.actiavteCursors', function () {
-		pending_selections.unshift(vscode.window.activeTextEditor.selection) 
-		vscode.window.activeTextEditor.selections = pending_selections
+		// pending_selections.unshift(vscode.window.activeTextEditor.selection) 
+		//vscode.window.activeTextEditor.selections = pending_selections
+		active_editor = vscode.window.activeTextEditor
+		active_editor.selections = active_editor.selections.concat(pending_selections)
 		pending_selections = []
 	});
 	let disposable3 = vscode.commands.registerCommand('octopus_writer.popCursor', function () {

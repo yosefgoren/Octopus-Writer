@@ -10,7 +10,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:octopus_writer.captureCursor",
+		"onCommand:octopus_writer.captureCursors",
         "onCommand:octopus_writer.actiavteCursors",
 		"onCommand:octopus_writer.popCursor"
 	],
@@ -18,8 +18,8 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "octopus_writer.captureCursor",
-				"title": "Capture Cursor"
+				"command": "octopus_writer.captureCursors",
+				"title": "Capture Cursors"
 			},
 			{
 				"command": "octopus_writer.actiavteCursors",
