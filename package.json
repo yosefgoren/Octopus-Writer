@@ -10,9 +10,9 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:octopus_writer.captureCursors",
-        "onCommand:octopus_writer.actiavteCursors",
-		"onCommand:octopus_writer.popCursor",
+		"onCommand:octopus_writer.captureSelections",
+        "onCommand:octopus_writer.actiavteSelections",
+		"onCommand:octopus_writer.popSelection",
 		"onCommand:octopus_writer.throwCaptured",
 		"onCommand:octopus_writer.enumerateSelections"
 	],
@@ -20,20 +20,20 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "octopus_writer.captureCursors",
-				"title": "Capture Cursors"
+				"command": "octopus_writer.captureSelections",
+				"title": "Capture Selections"
 			},
 			{
-				"command": "octopus_writer.actiavteCursors",
-				"title": "Activate Cursors"
+				"command": "octopus_writer.actiavteSelections",
+				"title": "Pop All Selections"
 			},
 			{
-				"command": "octopus_writer.popCursor",
-				"title": "Pop Last Cursor"
+				"command": "octopus_writer.popSelection",
+				"title": "Pop Last Selection"
 			},
 			{
 				"command": "octopus_writer.throwCaptured",
-				"title": "Throw Captured Cursors"
+				"title": "Throw Captured Selections"
 			},
 			{
 				"command": "octopus_writer.enumerateSelections",
