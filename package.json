@@ -2,7 +2,7 @@
   "name": "OctopusWriter",
 	"displayName": "Octopus-Writer",
 	"description": "this extension is meant to provide new text editing tools to allow a faster workflow",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"engines": {
 		"vscode": "^1.54.0"
 	},
@@ -13,7 +13,8 @@
 		"onCommand:octopus_writer.captureCursors",
         "onCommand:octopus_writer.actiavteCursors",
 		"onCommand:octopus_writer.popCursor",
-		"onCommand:octopus_writer.throwCaptured"
+		"onCommand:octopus_writer.throwCaptured",
+		"onCommand:octopus_writer.enumerateSelections"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -33,6 +34,10 @@
 			{
 				"command": "octopus_writer.throwCaptured",
 				"title": "Throw Captured Cursors"
+			},
+			{
+				"command": "octopus_writer.enumerateSelections",
+				"title": "Enumerate Selections"
 			}
 		]
 	},

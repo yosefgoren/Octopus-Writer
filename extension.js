@@ -41,10 +41,22 @@ function activate(context) {
 	let disposable4 = vscode.commands.registerCommand('octopus_writer.throwCaptured', function () {
 		pending_selections = []
 	});
+	let disposable5 = vscode.commands.registerCommand('octopus_writer.enumerateSelections', function () {
+		editor = vscode.window.activeTextEditor
+		editor.edit(function (edit) {
+			for(selection_idx = 0; selection_idx < editor.selections.length; ++selection_idx){
+				const sel = editor.selections[selection_idx]
+				const range = new vscode.Range(sel.start, sel.end)
+				edit.replace(range, selection_idx.toString())
+			}
+		})
+
+	});
 	context.subscriptions.push(disposable1);
 	context.subscriptions.push(disposable2);
 	context.subscriptions.push(disposable3);
 	context.subscriptions.push(disposable4);
+	context.subscriptions.push(disposable5);
 }
 function deactivate() {}
 
