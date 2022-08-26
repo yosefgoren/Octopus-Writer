@@ -50,13 +50,32 @@ function activate(context) {
 				edit.replace(range, selection_idx.toString())
 			}
 		})
-
+	});
+	let disposable6 = vscode.commands.registerCommand('octopus_writer.evaluateSelections', function () {
+		editor = vscode.window.activeTextEditor
+		vscode.window.showInformationMessage('Evaluating '+editor.selections.length.toString()+' Selections.');
+		editor.edit(function (edit) {
+			for(selection_idx = 0; selection_idx < editor.selections.length; ++selection_idx){
+				const sel = editor.selections[selection_idx]
+				const range = new vscode.Range(sel.start, sel.end)
+				text = editor.document.getText(range)
+				//vscode.window.showInformationMessage('text: '+text);
+				try{
+					new_text = eval(text).toString()
+					edit.replace(range, new_text.toString())
+				} catch (err) {
+					vscode.window.showInformationMessage('could not print evaluation of \''+text+'\'');
+				}
+				//vscode.window.showInformationMessage('next: '+new_text);
+			}
+		})
 	});
 	context.subscriptions.push(disposable1);
 	context.subscriptions.push(disposable2);
 	context.subscriptions.push(disposable3);
 	context.subscriptions.push(disposable4);
 	context.subscriptions.push(disposable5);
+	context.subscriptions.push(disposable6);
 }
 function deactivate() {}
 
