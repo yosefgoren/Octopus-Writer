@@ -70,12 +70,44 @@ function activate(context) {
 			}
 		})
 	});
+	let disposable7 = vscode.commands.registerCommand('octopus_writer.generateSelections', function () {
+		editor = vscode.window.activeTextEditor
+		vscode.window.showInformationMessage('Generating '+editor.selections.length.toString()+' Selections.');
+		editor.edit(function (edit) {
+			for(selection_idx = 0; selection_idx < editor.selections.length; ++selection_idx){
+				const sel = editor.selections[selection_idx]
+				const range = new vscode.Range(sel.start, sel.end)
+				const text = editor.document.getText(range)
+				try{
+					const args = text.split(" ")
+					offset = 2
+					if(args.length > 1){
+						offset = parseInt(args[1])
+					}
+					const gen_count = parseInt(args[0])
+					vscode.window.showInformationMessage(offset.toString()+" "+gen_count.toString());
+					
+					for(i = 0; i < gen_count; ++i){
+						pending_selections.push(new vscode.Selection(
+							new vscode.Position(sel.start.line+offset*i, sel.start.character),
+							new vscode.Position(sel.start.line+offset*i, sel.start.character)
+						))
+					}
+					edit.replace(range, "")
+				} catch (err) {
+					vscode.window.showInformationMessage('failed to parse generation parameters from:\n\t\''+text+'\'\n\nGenerate Selections syntax: \'<count> <offset>\'.');
+				}
+				//vscode.window.showInformationMessage('next: '+new_text);
+			}
+		})
+	});
 	context.subscriptions.push(disposable1);
 	context.subscriptions.push(disposable2);
 	context.subscriptions.push(disposable3);
 	context.subscriptions.push(disposable4);
 	context.subscriptions.push(disposable5);
 	context.subscriptions.push(disposable6);
+	context.subscriptions.push(disposable7);
 }
 function deactivate() {}
 

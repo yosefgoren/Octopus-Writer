@@ -15,7 +15,8 @@
 		"onCommand:octopus_writer.popSelection",
 		"onCommand:octopus_writer.throwCaptured",
 		"onCommand:octopus_writer.enumerateSelections",
-		"onCommand:octopus_writer.evaluateSelections"
+		"onCommand:octopus_writer.evaluateSelections",
+		"onCommand:octopus_writer.generateSelections"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -43,6 +44,10 @@
 			{
 				"command": "octopus_writer.evaluateSelections",
 				"title": "Evaluate Selections"
+			},
+			{
+				"command": "octopus_writer.generateSelections",
+				"title": "Generate Selections"
 			}
 		]
 	},
