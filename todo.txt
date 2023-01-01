@@ -1,0 +1,4 @@
+* add selection-mobility functionality
+* find how to add new shortcuts on installation (or override existing ones)
+* add optional 'set recommended keybinds' command
+* add video tutorials to README.md file
