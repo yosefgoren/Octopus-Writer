@@ -62,6 +62,9 @@ All generated selections are appended to the [The Captured Selections Stack](#th
 # Text Manipulation Commands
 
 ## Enumerate Selections
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/62563844/222209429-561d3f54-9fa5-470d-a42f-d405badcdf1b.gif)
+
+
 `TEI: (no arguments)`<br />
 When this command is called, each active selection is inserted with an index (the active selections are numbered from most oldest to most recent). If a selection bounds some text - that test will be replaced by the inserted index.
 
