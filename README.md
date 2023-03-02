@@ -35,6 +35,7 @@ When a command is called, this input & output interface is applied to each activ
 The commands apply to each of the active selections by their order (The earlier captured commands are first e.t.c). 
 
 # Selections Stack Manipulation
+![OW_push_pop_charvec](https://user-images.githubusercontent.com/62563844/222545368-ce6fc68f-b838-4fd8-9457-962dc64877cd.gif)
 
 ## Capture Selections
 This command will push a copy of each active selections into the top of the stack.
