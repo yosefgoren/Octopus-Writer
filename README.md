@@ -48,11 +48,16 @@ in the captured selections stack. After this command is called the captured selc
 This command replaces the set of active selections with the last (top) selection to be inserted into
 the stack. After the command executes the selection will no longer be in the stack.
 
+![pop_gen_sel_ex](https://user-images.githubusercontent.com/62563844/222890427-b18a7dfa-272e-4173-a21b-039e1201c05d.gif)
+
 ## Throw Captured Selections
 This command empties the captured selections stack.
 
 ## Generate Selections
 `TEI: <count> <offset>`<br />
+
+![gen_sel_ex](https://user-images.githubusercontent.com/62563844/222886697-290ce1b5-27d4-4829-b92e-8bee75420289.gif)
+
 For each of the active selections, the content captured by the selection will be deleted and interpreted
 as the parameters for the [Generate Selections](#generate-selections) command. The command has two parameters: `count` and `offset`.<br />
 The first parameter: `count` (decimal number) dictates the number of selections which will be generated.<br />
