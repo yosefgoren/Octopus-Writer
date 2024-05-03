@@ -1,8 +1,9 @@
 {
-  "name": "OctopusWriter",
+	"name": "OctopusWriter",
 	"displayName": "Octopus-Writer",
 	"description": "this extension is meant to provide new text editing tools to allow a faster workflow",
-	"version": "0.1.2",
+	"icon": "octopus_writer_img.png",
+	"version": "0.1.6",
 	"engines": {
 		"vscode": "^1.54.0"
 	},
@@ -11,7 +12,7 @@
 	],
 	"activationEvents": [
 		"onCommand:octopus_writer.captureSelections",
-        "onCommand:octopus_writer.actiavteSelections",
+		"onCommand:octopus_writer.actiavteSelections",
 		"onCommand:octopus_writer.popSelection",
 		"onCommand:octopus_writer.throwCaptured",
 		"onCommand:octopus_writer.enumerateSelections",
@@ -26,7 +27,7 @@
 				"title": "Capture Selections"
 			},
 			{
-				"command": "octopus_writer.actiavteSelections",
+				"command": "octopus_writer.activateSelections",
 				"title": "Pop All Selections"
 			},
 			{
@@ -49,6 +50,28 @@
 				"command": "octopus_writer.generateSelections",
 				"title": "Generate Selections"
 			}
+		],
+		"keybindings": [
+			{
+				"command": "octopus_writer.captureSelections",
+				"key": "Alt+D"
+			},
+			{
+				"command": "octopus_writer.activateSelections",
+				"key": "Alt+A"
+			},
+			{
+				"command": "octopus_writer.popSelection",
+				"key": "Alt+W"
+			},
+			{
+				"command": "octopus_writer.enumerateSelections",
+				"key": "Alt+N"
+			},
+			{
+				"command": "octopus_writer.evaluateSelections",
+				"key": "Alt+E"
+			}
 		]
 	},
 	"scripts": {
@@ -57,16 +80,16 @@
 		"test": "node ./test/runTest.js"
 	},
 	"devDependencies": {
-        "@types/vscode": "^1.54.0",
-        "@types/glob": "^7.1.4",
-        "@types/mocha": "^9.0.0",
-        "@types/node": "14.x",
-        "eslint": "^8.1.0",
-        "glob": "^7.1.7",
-        "mocha": "^9.1.3",
-        "typescript": "^4.4.4",
-        "@vscode/test-electron": "^1.6.2"
-    },
+		"@types/vscode": "^1.54.0",
+		"@types/glob": "^7.1.4",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "14.x",
+		"eslint": "^8.1.0",
+		"glob": "^7.1.7",
+		"mocha": "^9.1.3",
+		"typescript": "^4.4.4",
+		"@vscode/test-electron": "^1.6.2"
+	},
 	"repository": "https://github.com/yosefgoren/Octopus-Writer.git",
 	"publisher": "octopus-writer"
 }

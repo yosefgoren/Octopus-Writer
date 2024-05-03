@@ -1,7 +1,26 @@
 const { stringify } = require('querystring');
 const vscode = require('vscode');
 
+function default_dec_class() {
+	return vscode.window.createTextEditorDecorationType({
+		backgroundColor: "rgba(0, 255, 255, 0.2)",
+		borderWidth: `1px 1px 1px 1px`,
+		borderStyle: "solid",
+		border: "solid",
+		borderColor: "rgba(0, 255, 255, 0.5)"	
+	});
+}
+
 let pending_selections = [];
+let current_decoration_class = default_dec_class();
+
+function update_pending_selections_decorations(){
+	try {
+		current_decoration_class.dispose();
+	} catch (error){}
+	current_decoration_class = default_dec_class();
+	vscode.window.activeTextEditor.setDecorations(current_decoration_class, pending_selections);
+}
 
 function pos2str(position){
 	return "line: "+position.line+", character: "+position.character
@@ -13,8 +32,12 @@ function pos2str(position){
 function activate(context) {
 	console.log('Octopus Writer has been activated.');
 
+	vscode.workspace.onDidChangeConfiguration(update_pending_selections_decorations);
+    vscode.window.onDidChangeTextEditorSelection(update_pending_selections_decorations);
+
 	let disposable1 = vscode.commands.registerCommand('octopus_writer.captureSelections', function () {
 		let active_editor = vscode.window.activeTextEditor
+
 		num_cursors = active_editor.selections.length
 		for(selection_idx = 0; selection_idx < num_cursors; ++selection_idx){
 			const anchor_pos = active_editor.selections[selection_idx].anchor
@@ -27,13 +50,15 @@ function activate(context) {
 		if(num_cursors > 1){
 			vscode.window.showInformationMessage('Captured '+num_cursors.toString()+' Selections.');
 		}
+		update_pending_selections_decorations();
 	});
-	let disposable2 = vscode.commands.registerCommand('octopus_writer.actiavteSelections', function () {
+	let disposable2 = vscode.commands.registerCommand('octopus_writer.activateSelections', function () {
 		// pending_selections.unshift(vscode.window.activeTextEditor.selection) 
 		//vscode.window.activeTextEditor.selections = pending_selections
 		active_editor = vscode.window.activeTextEditor
 		active_editor.selections = active_editor.selections.concat(pending_selections)
 		pending_selections = []
+		update_pending_selections_decorations();
 	});
 	let disposable3 = vscode.commands.registerCommand('octopus_writer.popSelection', function () {
 		vscode.window.activeTextEditor.selection = pending_selections.pop()
